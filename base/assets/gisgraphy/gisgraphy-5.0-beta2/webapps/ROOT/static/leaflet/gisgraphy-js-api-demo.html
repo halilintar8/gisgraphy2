@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Gisgraphy-js-api demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link href="style/gisgraphy-leaflet.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/placetype.js"></script>
+    <script src="js/typeahead/jquery-1.11.1.js"></script>
+    <script src="js/typeahead/typeahead.bundle.js"></script>
+    <script src="js/typeahead/bloodhound.js"></script>
+    <script src="js/typeahead/typeahead.jquery.js"></script>
+    <script src="js/typeahead/handlebars-v1.3.0.js"></script>
+    <script src="js/gisgraphy-js-api.js"></script>
+
+    <div id="gisgraphy-leaflet">
+    </div>
+
+    <script type="text/javascript">
+        var gisgraphyGeocoder = new gisgraphyAutocomplete({
+            ELEMENT_ID: "gisgraphy-leaflet"
+        });
+        gisgraphyGeocoder.initAutoCompletion();
+    </script>
+<a href="https://github.com/gisgraphy/gisgraphy" target="gis"><img style="position: absolute; top: 0; right: 0; border: 0;z-index:9999" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+</body>
+
+</html>

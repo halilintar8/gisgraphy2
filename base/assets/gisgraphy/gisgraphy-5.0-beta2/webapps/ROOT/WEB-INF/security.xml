@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns:b="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+
+<!--
+<http pattern="/resources/**" security="none"/>
+<http pattern="/images/**" security="none"/>
+<http pattern="/styles/**" security="none"/>
+<http pattern="/scripts/**" security="none"/>
+<http pattern="/public/**" security="none"/>
+<http pattern="/static/**" security="none"/>
+<http pattern="/*search*.html*" security="none"/>
+<http pattern="/google*.html" security="none"/>
+<http pattern="/displayfeature.html*" security="none"/>
+<http pattern="/login.html*" security="none"/>-->
+<!--<http pattern="/login.jsp" security="none"/>-->
+
+   <!-- <http use-expressions="true" auto-config="false">
+	<intercept-url pattern="/login" access="hasAnyRole('ROLE_ANONYMOUS')" />
+        <intercept-url pattern="/**/*html*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true"
+			login-processing-url="/login"
+			  username-parameter="username"
+            password-parameter="password" />
+        <logout logout-url="/logout.jsp"/>
+    </http>-->
+
+    <http  pattern="/images/**" security="none"/>
+        <http  pattern="/styles/**" security="none"/>
+        <http  pattern="/scripts/**" security="none"/>
+        <http  pattern="/public/**" security="none"/>
+        <http  pattern="/static/**" security="none"/>
+        <http  pattern="/*search*.html*" security="none"/>
+        <http  pattern="/google*.html" security="none" />
+        <http  pattern="/displayfeature.html*" security="none"/>
+
+  <http  use-expressions="true" disable-url-rewriting="false" >
+	  <headers disabled="true"/>
+		<csrf disabled="true"/>
+
+<intercept-url pattern="/login" access="permitAll"/>
+<intercept-url pattern="/j_security_check" access="permitAll"/>
+        <intercept-url pattern="/**/*.html*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+       
+        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?error=true"
+                    login-processing-url="/j_security_check"  username-parameter="j_username" 
+					password-parameter="j_password"/>
+        <logout logout-url="/logout.jsp"/>
+    </http>
+    
+  
+ 
+      
+
+<authentication-manager>
+    <authentication-provider user-service-ref="userDao">
+        <password-encoder hash="sha"/>
+       <!-- <user-service>
+            <user name="user" password="12dea96fec20593566ab75692c9949596833adc9" authorities="ROLE_USER"/>
+            <user name="admin" password="d033e22ae348aeb5660fc2140aec35850c4da997" authorities="ROLE_ADMIN"/>
+        </user-service>-->
+    </authentication-provider>
+    </authentication-manager>
+
+
+<b:bean id="userdao" class="com.gisgraphy.service.UserSecurityAdvice"/>
+
+   <global-method-security proxy-target-class="false">
+        <protect-pointcut expression="execution(* *..service.UserManager.removeUser(..))" access="ROLE_ADMIN"/>
+    </global-method-security>
+
+    <b:bean id="userSecurityAdvice" class="com.gisgraphy.service.UserSecurityAdvice"/>
+</b:beans>
