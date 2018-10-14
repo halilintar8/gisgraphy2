@@ -14,7 +14,7 @@ RUN rm /usr/local/install-env.sh
 
 
 
-#app
+#app2
 ADD ./assets/gisgraphy/gisgraphy-latest.zip /usr/local/gisgraphy.zip
 
 ADD ./assets/install-gisgraphy.sh /usr/local/install-gisgraphy.sh
