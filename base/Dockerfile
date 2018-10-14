@@ -1,4 +1,5 @@
 FROM ubuntu:16.04
+#FROM ubuntu:18.04
 MAINTAINER davidmasclet@gisgraphy.com
 
 ARG PGPASSWORD=password
@@ -14,7 +15,7 @@ RUN rm /usr/local/install-env.sh
 
 
 
-#app22
+#app
 ADD ./assets/gisgraphy/gisgraphy-latest.zip /usr/local/gisgraphy.zip
 
 ADD ./assets/install-gisgraphy.sh /usr/local/install-gisgraphy.sh
