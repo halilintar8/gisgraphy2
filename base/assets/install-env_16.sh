@@ -16,14 +16,14 @@ if [[ -z $1 ]]
 apt-get update && \
       apt-get -y install apt-utils
 #apt-get -y install sudo apt-utils python-software-properties python3-software-properties software-properties-common bash apt-utils wget
-apt-get -y install python3-software-properties software-properties-common bash apt-utils
+apt-get -y install sudo apt-utils python-software-properties python3-software-properties software-properties-common bash apt-utils
 
 #add-apt-repository -y  ppa:webupd8team/java
 #apt-get update
 #echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
 #echo debconf shared/accepted-oracle-license-v1-1 seen true | sudo debconf-set-selections
 #
-apt-get install -y sudo
+#apt-get install -y sudo
 apt-get install -y wget
 
 #apt-get install -y oracle-java8-installer 
@@ -44,15 +44,15 @@ rm jdk-8u181-linux-x64.tar.gz
 
 
 # postgres
-#apt-get install -y postgresql-9.5
-#apt-get install -y  postgresql-contrib-9.5
+apt-get install -y postgresql-9.5
+apt-get install -y  postgresql-contrib-9.5
 
-#apt-get install -y postgis postgresql-9.5-postgis-2.2
+apt-get install -y postgis postgresql-9.5-postgis-2.2
 
-apt-get install -y postgresql
-apt-get install -y  postgresql-contrib
+#apt-get install -y postgresql
+#apt-get install -y  postgresql-contrib
 
-apt-get install -y postgis postgresql-10-postgis-2.4
+#apt-get install -y postgis postgresql-postgis
 
 /etc/init.d/postgresql start
 
@@ -70,12 +70,10 @@ rm utf8.sql
 psql -U postgres -h 127.0.0.1 -c "CREATE DATABASE gisgraphy ENCODING = 'UTF8';"
 
 
-#psql -U postgres -h 127.0.0.1 -d gisgraphy -f /usr/share/postgresql/9.5/contrib/postgis-2.2/postgis.sql
-#psql -U postgres -h 127.0.0.1 -d gisgraphy -f /usr/share/postgresql/9.5/contrib/postgis-2.2/spatial_ref_sys.sql
-psql -U postgres -h 127.0.0.1 -d gisgraphy -f /usr/share/postgresql/10/contrib/postgis-2.4/postgis.sql
-psql -U postgres -h 127.0.0.1 -d gisgraphy -f /usr/share/postgresql/10/contrib/postgis-2.4/spatial_ref_sys.sql
-
+psql -U postgres -h 127.0.0.1 -d gisgraphy -f /usr/share/postgresql/9.5/contrib/postgis-2.2/postgis.sql
+psql -U postgres -h 127.0.0.1 -d gisgraphy -f /usr/share/postgresql/9.5/contrib/postgis-2.2/spatial_ref_sys.sql
 
 /etc/init.d/postgresql stop && sleep 20;
 
 apt-get -y install -y htop net-tools vim psmisc unzip
+
